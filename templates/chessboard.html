@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chessboard</h1>
+    <div class="chessboard col">
+        {% for x in range(rows): %}
+            <div class="row">
+                {% if (x%2==0) %}
+                    {%for y in range(cols):%}
+
+                        {% if(y%2==0): %}
+                            <div class="tile bg-light" title="{{light}}"></div>
+                        {% else: %}
+                            <div class="tile bg-dark" title="{{dark}}"></div>
+                        {% endif %}
+
+                    {% endfor %}
+                {% else %}
+                    {%for y in range(cols):%}
+
+                        {% if(y%2==0): %}
+                            <div class="tile bg-dark" title="{{dark}}"></div>
+                        {% else: %}
+                            <div class="tile bg-light" title="{{light}}"></div>
+                        {% endif %}
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <script type="text/javascript">
+        var color = "{{light}}";
+        var color2 = "{{dark}}";
+     </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+</body>
+</html>
